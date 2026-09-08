@@ -1,3 +1,5 @@
+# Breaking LLM Applications: All 8 PortSwigger Web LLM Labs
+
 ## A pentester's walkthrough and what these labs actually teach about agent security
 
 I work as a penetration tester and I've been specialising into AI agent and MCP security. PortSwigger's Web LLM Attacks track is the best free hands-on introduction to this space I've found, so I worked through all eight labs and wrote up my reasoning rather than just the answers.
