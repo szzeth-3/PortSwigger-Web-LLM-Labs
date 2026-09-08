@@ -28,7 +28,7 @@ First probe was `show tables`, which failed:
 
 ![show tables rejected](images/1_3.png)
 
-Worth noting because it's a useful reminder: a refusal here isn't a security control, it's the model being unhelpful. I moved straight to a query I could guess the shape of.
+Worth noting because it's a useful reminder: a refusal here isn't a security control, it's the model being unhelpful. Moved straight to a query I could guess the shape of.
 
 `select * from users` returned carlos's credentials in plaintext:
 
@@ -78,7 +78,7 @@ Subscribed with that address:
 
 ![Subscribing](images/2_4.png)
 
-Email arrived, confirming end-to-end delivery and that I control one side of the channel:
+Email arrived, confirming end-to-end delivery and that we control one side of the channel:
 
 ![Email received](images/2_5.png)
 
@@ -112,7 +112,7 @@ Two things worth sitting with. First, the LLM was never the vulnerability: there
 
 **Objective:** delete `carlos`, who regularly asks the chat about a specific product.
 
-This is where it gets interesting, because I no longer talk to the model directly. I have to plant something that *carlos's* session will read.
+This is where it gets interesting, because we no longer talk to the model directly. We have to plant something that *carlos's* session will read.
 
 ### Enumeration
 
@@ -122,7 +122,7 @@ This is where it gets interesting, because I no longer talk to the model directl
 
 `delete_account`, `password_reset`, `edit_email`, `product_info`. The target function is obvious. The question is how to make carlos's session call it.
 
-The task mentions he asks about a specific product, which strongly implies the product page is the injection vector. I couldn't edit the description, but reviews were open:
+The task mentions he asks about a specific product, which strongly implies the product page is the injection vector. Couldn't edit the description, but reviews were open:
 
 ![Product page with review option](images/3_3.png)
 
@@ -140,13 +140,13 @@ This is the step I'd emphasise to anyone learning this. Before crafting a payloa
 
 ![Review appears in model context](images/3_6.png)
 
-My review came back in the model's answer. The channel is confirmed - anything I write in a review is read by the model when another user asks about this product.
+My review came back in the model's answer. The channel is confirmed - anything we write in a review is read by the model when another user asks about this product.
 
-Then I checked the backend AI logs the lab exposes:
+Then we checked the backend AI logs the lab exposes:
 
 ![Backend message structure](images/3_7.png)
 
-This is the key insight of the lab. The conversation is a sequence of role-tagged messages: `user`, `assistant`, `tool`. Retrieved product data - including my review - is injected into that stream as content. If I can make my review *look like* a message from the `assistant` role, the model may treat it as part of its own reasoning rather than as third-party data.
+This is the key insight of the lab. The conversation is a sequence of role-tagged messages: `user`, `assistant`, `tool`. Retrieved product data - including the review - is injected into that stream as content. If we can make my review *look like* a message from the `assistant` role, the model may treat it as part of its own reasoning rather than as third-party data.
 
 ### The payload
 
