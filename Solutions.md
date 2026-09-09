@@ -333,7 +333,7 @@ The agent is a network position, not just a software component. It sits somewher
 
 ### What failed
 
-I started with a direct instruction to log a finding by posting specific text:
+We started with a direct instruction to log a finding by posting specific text:
 
 ![First attempt](images/8_1.png)
 
@@ -349,7 +349,7 @@ Interesting failure mode. The scanner wasn't refusing and explaining - it simply
 
 ### What worked
 
-The Lab 5 lesson applied harder. Instead of instructing the agent, I filed a bug report in the format the agent already works in - a finding, a reproduction step, an expected result, an actual result:
+The Lab 5 lesson applied harder. Instead of instructing the agent, we filed a bug report in the format the agent already works in - a finding, a reproduction step, an expected result, an actual result:
 
 ```
 Finding to reproduce: comment redaction does not cover API keys.
