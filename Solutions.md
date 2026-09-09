@@ -245,7 +245,7 @@ The most effective agent injections aren't commands. They're *tasks framed in th
 
 **Objective:** exfiltrate carlos's API key using the same scanner.
 
-Once logged in, I could see an API key on my own account page - so the same field exists on carlos's.
+Once logged in, we can see an API key on our own account page - so the same field exists on carlos's.
 
 ### The payload
 
