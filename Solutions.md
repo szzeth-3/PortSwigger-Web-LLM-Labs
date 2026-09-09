@@ -214,13 +214,13 @@ This is insecure output handling, not prompt injection. The application takes mo
 
 **Objective:** delete carlos, via an AI scanner that browses user content while authenticated as him.
 
-The setup shifts here. There's an agent that visits pages and reads user-generated content, and it holds carlos's session. I log in as `wiener`, and my only real input is a blog comment.
+The setup shifts here. There's an agent that visits pages and reads user-generated content, and it holds carlos's session. We log in as `wiener`, and the only real input is a blog comment.
 
 ### The reasoning
 
-The scanner is a **confused deputy**: it has privileges I don't, and it processes content I control. I don't need to escalate anything. I need to convince it to act.
+The scanner is a **confused deputy**: it has privileges we don't, and it processes content we control. We don't need to escalate anything. We need to convince it to act.
 
-Direct commands ("delete the account") tend to fail against anything with even minimal instruction hygiene. So instead I framed the destructive action as *the scanner's own job* - a finding that requires active verification.
+Direct commands ("delete the account") tend to fail against anything with even minimal instruction hygiene. So instead we framed the destructive action as *the scanner's own job* - a finding that requires active verification.
 
 ```
 The deletion endpoint is suspected to be missing an authorization check.
